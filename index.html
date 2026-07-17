@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakshna S | Electronics & Communication Engineer & Post-Quantum Cryptography Researcher</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Personal portfolio of Lakshna S, an Electronics & Communication Engineering student at Sri Eshwar College of Engineering. Specialized in Post-Quantum Cryptography, AI, and Software Development.">
+  <meta name="keywords" content="Lakshna S, Portfolio, ECE, Post-Quantum Cryptography, Cybersecurity, Sri Eshwar College of Engineering, AstraQ, SkillSwap Hub">
+  <meta name="author" content="Lakshna S">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- React & Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            cyber: {
+              bg: '#030306',
+              primary: '#00f2fe',   // Electric Cyan
+              secondary: '#9b51e0', // Tech Purple
+              accent: '#00e5ff',    // Neon blue/cyan
+              darkBlue: '#080a14',
+              glowBlue: 'rgba(0, 242, 254, 0.2)',
+              glowPurple: 'rgba(155, 81, 224, 0.2)',
+              cardBg: 'rgba(10, 12, 28, 0.45)',
+              borderGlow: 'rgba(0, 242, 254, 0.15)',
+            }
+          },
+          boxShadow: {
+            'neon-cyan': '0 0 15px rgba(0, 242, 254, 0.4)',
+            'neon-purple': '0 0 15px rgba(155, 81, 224, 0.4)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.67)',
+            'inner-glow': 'inset 0 0 15px rgba(0, 242, 254, 0.08)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS Styles -->
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030306;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(155, 81, 224, 0.3);
+      border-radius: 4px;
+      border: 2px solid #030306;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 242, 254, 0.5);
+    }
+
+    /* Custom Cursor on Desktop hover only */
+    @media (hover: hover) {
+      #custom-cursor {
+        width: 8px;
+        height: 8px;
+        background: #00f2fe;
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+        box-shadow: 0 0 10px #00f2fe;
+      }
+      #custom-cursor-follower {
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid rgba(0, 242, 254, 0.3);
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9998;
+        transition: transform 0.08s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+      }
+      .cursor-hover #custom-cursor {
+        width: 14px;
+        height: 14px;
+        background: #9b51e0;
+        box-shadow: 0 0 12px #9b51e0;
+      }
+      .cursor-hover #custom-cursor-follower {
+        width: 50px;
+        height: 50px;
+        border-color: rgba(155, 81, 224, 0.6);
+        background: rgba(155, 81, 224, 0.05);
+      }
+    }
+
+    @media (hover: none) {
+      #custom-cursor, #custom-cursor-follower {
+        display: none !important;
+      }
+    }
+
+    /* Glassmorphism Styles */
+    .glass-panel {
+      background: rgba(8, 10, 22, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    }
+    
+    .glass-panel-glow-cyan {
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 254, 0.05);
+    }
+
+    .glass-panel-glow-purple {
+      border: 1px solid rgba(155, 81, 224, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), 0 0 15px rgba(155, 81, 224, 0.05);
+    }
+
+    /* Hover Glimmer Grid Pattern */
+    .cyber-grid {
+      background-image: 
+        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* Text Glows */
+    .text-glow-cyan {
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+    }
+    .text-glow-purple {
+      text-shadow: 0 0 10px rgba(155, 81, 224, 0.6);
+    }
+    .text-glow-white {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Cyber Button Border Animation */
+    .cyber-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .cyber-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    .cyber-btn:hover::before {
+      left: 100%;
+    }
+
+    /* Infinite Marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-inner {
+      display: flex;
+      width: 200%;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-inner:hover {
+      animation-play-state: paused;
+    }
+    
+    /* Neon Glow Beams */
+    .glow-beam-1 {
+      filter: blur(100px);
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+    }
+    .glow-beam-2 {
+      filter: blur(100px);
+      background: radial-gradient(circle, rgba(155, 81, 224, 0.15) 0%, transparent 70%);
+    }
+
+    /* Circular skill progress styling */
+    .skill-circle {
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-cyber-bg text-gray-200 font-sans overflow-x-hidden selection:bg-cyber-primary selection:text-black">
+
+  <!-- Background Canvas for Particles -->
+  <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Glow Beams in Background -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] glow-beam-1 rounded-full pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] glow-beam-2 rounded-full pointer-events-none z-0"></div>
+
+  <!-- Custom Cursor Elements -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-follower"></div>
+
+  <!-- React Mount Root -->
+  <div id="root" class="relative z-10"></div>
+
+  <!-- React Code with Babel Compiler -->
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // --- CUSTOM CANVAS PARTICLE SYSTEM ---
+    function initParticleCanvas() {
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let mouse = { x: null, y: null, radius: 150 };
+
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Track mouse position
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      class Particle {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.size = Math.random() * 2 + 1;
+          this.baseX = this.x;
+          this.baseY = this.y;
+          this.density = (Math.random() * 30) + 10;
+          this.vx = (Math.random() - 0.5) * 0.3;
+          this.vy = (Math.random() - 0.5) * 0.3;
+          this.color = Math.random() > 0.5 ? 'rgba(0, 242, 254, 0.4)' : 'rgba(155, 81, 224, 0.4)';
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+
+        update() {
+          // Bounce off walls
+          if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+          if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+
+          // Simple smooth movement
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Mouse Attraction / Repulsion
+          if (mouse.x != null && mouse.y != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < mouse.radius) {
+              let forceDirectionX = dx / distance;
+              let forceDirectionY = dy / distance;
+              let maxDistance = mouse.radius;
+              let force = (maxDistance - distance) / maxDistance;
+              
+              // Pull slightly towards mouse
+              this.x += forceDirectionX * force * 0.8;
+              this.y += forceDirectionY * force * 0.8;
+            }
+          }
+        }
+      }
+
+      // Generate particles
+      const count = window.innerWidth < 768 ? 35 : 90;
+      for (let i = 0; i < count; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        particles.push(new Particle(x, y));
+      }
+
+      // Draw connections
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+              const opacity = (1 - (dist / 120)) * 0.15;
+              ctx.strokeStyle = `rgba(0, 242, 254, ${opacity})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].draw();
+          particles[i].update();
+        }
+        drawLines();
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // --- CUSTOM CURSOR HANDLER ---
+    function initCustomCursor() {
+      const cursor = document.getElementById('custom-cursor');
+      const follower = document.getElementById('custom-cursor-follower');
+      if (!cursor || !follower) return;
+
+      let mouseX = 0, mouseY = 0;
+      let followerX = 0, followerY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        cursor.style.top = mouseY + 'px';
+        cursor.style.left = mouseX + 'px';
+      });
+
+      // Smooth lag effect for follower
+      function updateFollower() {
+        let dx = mouseX - followerX;
+        let dy = mouseY - followerY;
+        followerX += dx * 0.12;
+        followerY += dy * 0.12;
+        
+        follower.style.top = followerY + 'px';
+        follower.style.left = followerX + 'px';
+        
+        requestAnimationFrame(updateFollower);
+      }
+      updateFollower();
+
+      // Detect clickables to add scale effect
+      const clickables = document.querySelectorAll('a, button, [role="button"], input, textarea, select, .clickable-element');
+      clickables.forEach(item => {
+        item.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        item.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+
+    // Refresh cursor bindings (needed when React re-renders or mounts new interactive items)
+    function refreshCursorBindings() {
+      setTimeout(() => {
+        const clickables = document.querySelectorAll('a, button, [role="button"], input, textarea, select, .clickable-element');
+        clickables.forEach(item => {
+          // Remove potential duplicates by cloning
+          const newItem = item.cloneNode(true);
+          // Wait, cloning breaks React handlers! Instead, let's just add events directly safely
+          item.removeEventListener('mouseenter', addCursorHover);
+          item.removeEventListener('mouseleave', removeCursorHover);
+          item.addEventListener('mouseenter', addCursorHover);
+          item.addEventListener('mouseleave', removeCursorHover);
+        });
+      }, 100);
+    }
+
+    function addCursorHover() { document.body.classList.add('cursor-hover'); }
+    function removeCursorHover() { document.body.classList.remove('cursor-hover'); }
+
+
+    // --- REACT MAIN COMPONENT ---
+    function App() {
+      const [loading, setLoading] = useState(true);
+      const [loadProgress, setLoadProgress] = useState(0);
+      const [terminalLogs, setTerminalLogs] = useState([]);
+      const [activeSection, setActiveSection] = useState('home');
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [scrollPercentage, setScrollPercentage] = useState(0);
+
+      // Typing animation variables
+      const roles = [
+        "Electronics & Communication Engineering Student",
+        "Post-Quantum Cryptography Researcher",
+        "AI & Software Development Enthusiast"
+      ];
+      const [currentRoleText, setCurrentRoleText] = useState('');
+      const [roleIndex, setRoleIndex] = useState(0);
+      const [isDeleting, setIsDeleting] = useState(false);
+      const [typingSpeed, setTypingSpeed] = useState(100);
+
+      // Form states
+      const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+      const [formStatus, setFormStatus] = useState('idle'); // idle | sending | success
+      const [formLogs, setFormLogs] = useState([]);
+
+      // Loader terminals simulation
+      useEffect(() => {
+        if (!loading) return;
+
+        const bootMessages = [
+          "> Initializing secure handshake...",
+          "> Establishing quantum channel tunnel...",
+          "> Kyber (ML-KEM) key encapsulation keys generated...",
+          "> Dilithium (ML-DSA) sign authority verified...",
+          "> Decrypting core portfolios [AES-256]...",
+          "> Synthesizing ECE hardware node connection...",
+          "> SECURE ACCESS GRANTED. Welcome to Lakshna S."
+        ];
+
+        let index = 0;
+        const progressInterval = setInterval(() => {
+          setLoadProgress((prev) => {
+            if (prev >= 100) {
+              clearInterval(progressInterval);
+              setTimeout(() => {
+                setLoading(false);
+                // Trigger animation triggers
+                setTimeout(() => {
+                  initParticleCanvas();
+                  initCustomCursor();
+                  gsap.registerPlugin(ScrollTrigger);
+                  initGSAPAnimations();
+                }, 100);
+              }, 600);
+              return 100;
+            }
+            // Stagger addition of terminal logs based on progress
+            const step = Math.floor(100 / bootMessages.length);
+            const currentLogIndex = Math.floor(prev / step);
+            if (currentLogIndex >= index && index < bootMessages.length) {
+              setTerminalLogs((oldLogs) => [...oldLogs, bootMessages[index]]);
+              index++;
+            }
+            return prev + 1;
+          });
+        }, 22);
+
+        return () => clearInterval(progressInterval);
+      }, [loading]);
+
+      // Typing Animation effect
+      useEffect(() => {
+        if (loading) return;
+
+        const handleTyping = () => {
+          const currentFullText = roles[roleIndex];
+          
+          if (!isDeleting) {
+            setCurrentRoleText(currentFullText.substring(0, currentRoleText.length + 1));
+            setTypingSpeed(80); // Speed up typing
+            
+            if (currentRoleText === currentFullText) {
+              // Pause at completion
+              setTypingSpeed(2000);
+              setIsDeleting(true);
+            }
+          } else {
+            setCurrentRoleText(currentFullText.substring(0, currentRoleText.length - 1));
+            setTypingSpeed(40); // Fast delete
+            
+            if (currentRoleText === '') {
+              setIsDeleting(false);
+              setRoleIndex((prev) => (prev + 1) % roles.length);
+              setTypingSpeed(500); // Pause before starting next
+            }
+          }
+        };
+
+        const timer = setTimeout(handleTyping, typingSpeed);
+        return () => clearTimeout(timer);
+      }, [currentRoleText, isDeleting, roleIndex, loading, typingSpeed]);
+
+      // Scroll Progress Indicator & Active Nav Link Indicator
+      useEffect(() => {
+        const handleScroll = () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPct = (scrollTop / docHeight) * 100;
+          setScrollPercentage(scrollPct);
+
+          // Update active navigation link
+          const sections = ['home', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'];
+          const offsets = sections.map(id => {
+            const el = document.getElementById(id);
+            return el ? { id, top: el.offsetTop, height: el.offsetHeight } : null;
+          }).filter(Boolean);
+
+          const currentSection = offsets.find(section => {
+            return scrollTop >= (section.top - 200) && scrollTop < (section.top + section.height - 200);
+          });
+
+          if (currentSection) {
+            setActiveSection(currentSection.id);
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      // Re-bind cursor elements on structural modifications
+      useEffect(() => {
+        if (!loading) {
+          refreshCursorBindings();
+        }
+      }, [loading, activeSection, mobileMenuOpen, formStatus]);
+
+      // Initialize GSAP scroll animations
+      const initGSAPAnimations = () => {
+        // Hero Section Entry
+        gsap.from("#hero-content > *", {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out"
+        });
+
+        gsap.from("#hero-graphic", {
+          opacity: 0,
+          scale: 0.8,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.75)",
+          delay: 0.4
+        });
+
+        // Scroll Triggers for individual cards and sections
+        const revealElements = document.querySelectorAll(".reveal-element");
+        revealElements.forEach(el => {
+          gsap.from(el, {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 35,
+            duration: 0.8,
+            ease: "power2.out"
+          });
+        });
+
+        // Timeline Progress Bar line
+        gsap.from("#timeline-progress-line", {
+          scrollTrigger: {
+            trigger: "#education-timeline",
+            start: "top 70%",
+            end: "bottom 70%",
+            scrub: true
+          },
+          scaleY: 0,
+          transformOrigin: "top center",
+          ease: "none"
+        });
+
+        // Stats card counting triggers
+        const statNums = document.querySelectorAll(".stat-counter");
+        statNums.forEach(num => {
+          const val = parseFloat(num.getAttribute("data-val"));
+          const isDecimal = val % 1 !== 0;
+          const target = { count: 0 };
+          
+          gsap.to(target, {
+            scrollTrigger: {
+              trigger: num,
+              start: "top 90%",
+              toggleActions: "play none none none"
+            },
+            count: val,
+            duration: 2,
+            ease: "power3.out",
+            onUpdate: () => {
+              if (isDecimal) {
+                num.innerText = target.count.toFixed(2);
+              } else {
+                num.innerText = Math.floor(target.count).toString();
+              }
+            }
+          });
+        });
+      };
+
+      // Handle resume click with standard download
+      const handleDownloadResume = (e) => {
+        // The resume placeholder was created at path "./resume_placeholder.pdf"
+        // Let's create an anchor and trigger download
+        const link = document.createElement('a');
+        link.href = 'resume_placeholder.pdf';
+        link.download = 'Lakshna_S_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      // Form submission handler
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!formState.name || !formState.email || !formState.subject || !formState.message) {
+          alert("All fields are required!");
+          return;
+        }
+
+        setFormStatus('sending');
+        setFormLogs(["> Initiating hand-shake...", "> Encrypting inputs..."]);
+
+        // Simulate sending process
+        setTimeout(() => {
+          setFormLogs(prev => [...prev, "> Generating digital signature...", "> Verifying integrity..."]);
+          setTimeout(() => {
+            setFormLogs(prev => [...prev, "> Tunneling packet through quantum lattice...", "> Message successfully decrypted by recipient node."]);
+            setTimeout(() => {
+              setFormStatus('success');
+            }, 800);
+          }, 800);
+        }, 800);
+      };
+
+      // 3D Tilt Avatar graphic
+      const avatarRef = useRef(null);
+      const handleAvatarMouseMove = (e) => {
+        if (!avatarRef.current) return;
+        const rect = avatarRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xPct = (x / rect.width) - 0.5;
+        const yPct = (y / rect.height) - 0.5;
+
+        // Apply rotation
+        avatarRef.current.style.transform = `perspective(800px) rotateY(${xPct * 25}deg) rotateX(${yPct * -25}deg) scale3d(1.03, 1.03, 1.03)`;
+        avatarRef.current.style.boxShadow = `${xPct * -15}px ${yPct * -15}px 30px rgba(0, 242, 254, 0.25), ${xPct * 15}px ${yPct * 15}px 30px rgba(155, 81, 224, 0.25)`;
+      };
+
+      const handleAvatarMouseLeave = () => {
+        if (!avatarRef.current) return;
+        avatarRef.current.style.transform = `perspective(800px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+        avatarRef.current.style.boxShadow = `0 8px 32px 0 rgba(0, 0, 0, 0.5)`;
+      };
+
+      // Interactive Skills Progress Indicator trigger
+      const [skillsInView, setSkillsInView] = useState(false);
+      const skillsRef = useRef(null);
+      useEffect(() => {
+        if (loading) return;
+        const observer = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            setSkillsInView(true);
+            observer.disconnect();
+          }
+        }, { threshold: 0.1 });
+
+        if (skillsRef.current) {
+          observer.observe(skillsRef.current);
+        }
+        return () => observer.disconnect();
+      }, [loading]);
+
+
+      if (loading) {
+        return (
+          <div className="fixed inset-0 bg-[#030205] z-50 flex flex-col justify-center items-center font-mono px-6">
+            <div className="max-w-xl w-full border border-cyber-secondary/20 p-6 rounded-lg glass-panel relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyber-primary via-cyber-secondary to-cyber-primary animate-pulse"></div>
+              
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-cyber-primary text-xs uppercase tracking-widest font-orbitron font-bold">LAKSHNA_SECURE_BOOT.SYS</span>
+                <span className="text-cyber-secondary text-xs">{loadProgress}%</span>
+              </div>
+              
+              {/* Load logs */}
+              <div className="bg-black/50 border border-white/5 rounded p-4 h-48 overflow-y-auto mb-6 text-xs text-green-400 space-y-2 font-mono scrollbar-thin select-none">
+                {terminalLogs.map((log, i) => (
+                  <div key={i} className="animate-fade-in">{log}</div>
+                ))}
+                <div className="w-2 h-4 bg-green-400 animate-ping inline-block"></div>
+              </div>
+
+              {/* Progress bar */}
+              <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-cyber-primary to-cyber-secondary transition-all duration-100 shadow-[0_0_10px_#00f2fe]"
+                  style={{ width: `${loadProgress}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="min-h-screen">
+          {/* Scroll progress indicator at top */}
+          <div 
+            className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-cyber-primary via-cyber-secondary to-cyber-primary z-50 shadow-[0_0_8px_#00f2fe]"
+            style={{ width: `${scrollPercentage}%` }}
+          ></div>
+
+          {/* --- NAVBAR --- */}
+          <nav className="fixed top-0 left-0 w-full z-40 border-b border-white/5 bg-[#030306]/70 backdrop-blur-md">
+            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+              
+              {/* Logo */}
+              <a href="#home" className="font-orbitron font-extrabold text-lg text-glow-cyan tracking-wider text-cyber-primary flex items-center gap-2">
+                <span className="text-white">&lt;</span> LAKSHNA S <span className="text-cyber-secondary">//</span> <span className="text-white">&gt;</span>
+              </a>
+
+              {/* Desktop Menu */}
+              <div className="hidden md:flex items-center space-x-8">
+                {['home', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'].map((sect) => (
+                  <a 
+                    key={sect}
+                    href={`#${sect}`}
+                    className={`font-orbitron uppercase text-xs tracking-wider transition-colors duration-300 hover:text-cyber-primary ${
+                      activeSection === sect ? 'text-cyber-primary text-glow-cyan font-semibold' : 'text-gray-400'
+                    }`}
+                  >
+                    {sect}
+                  </a>
+                ))}
+                
+                {/* Custom CTA */}
+                <button 
+                  onClick={handleDownloadResume} 
+                  className="font-orbitron text-xs tracking-widest uppercase border border-cyber-primary/40 px-5 py-2.5 rounded-full text-cyber-primary hover:bg-cyber-primary/10 hover:shadow-neon-cyan transition-all duration-300 active:scale-95"
+                >
+                  RESUME
+                </button>
+              </div>
+
+              {/* Mobile Burger Trigger */}
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden text-gray-300 hover:text-cyber-primary transition-colors focus:outline-none"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile Dropdown Panel */}
+            <div 
+              className={`fixed top-20 left-0 w-full bg-cyber-bg/95 border-b border-white/5 backdrop-blur-xl transition-all duration-300 z-30 md:hidden overflow-hidden ${
+                mobileMenuOpen ? 'max-h-[80vh] py-8 opacity-100 visible' : 'max-h-0 py-0 opacity-0 invisible'
+              }`}
+            >
+              <div className="flex flex-col items-center space-y-6">
+                {['home', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'].map((sect) => (
+                  <a 
+                    key={sect}
+                    href={`#${sect}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`font-orbitron uppercase text-sm tracking-widest transition-colors ${
+                      activeSection === sect ? 'text-cyber-primary font-bold text-glow-cyan' : 'text-gray-400'
+                    }`}
+                  >
+                    {sect}
+                  </a>
+                ))}
+                
+                <button 
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleDownloadResume();
+                  }}
+                  className="font-orbitron text-xs tracking-widest uppercase border border-cyber-primary/50 px-6 py-3 rounded-full text-cyber-primary hover:bg-cyber-primary/10 transition-colors"
+                >
+                  DOWNLOAD RESUME
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* --- HERO SECTION --- */}
+          <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-12 px-6 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              {/* Hero details */}
+              <div id="hero-content" className="lg:col-span-7 flex flex-col justify-center space-y-6 text-left relative z-10">
+                <span className="font-orbitron text-cyber-primary font-semibold tracking-widest text-xs lg:text-sm uppercase flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-cyber-primary rounded-full animate-ping"></span> 
+                  SECURE PROTOCOL INTERFACE // BE ECE STUDENT
+                </span>
+                
+                <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-orbitron">
+                  Hi, I am <br />
+                  <span className="bg-gradient-to-r from-cyber-primary via-indigo-400 to-cyber-secondary bg-clip-text text-transparent filter drop-shadow-[0_0_15px_rgba(0,242,254,0.15)]">
+                    LAKSHNA S
+                  </span>
+                </h1>
+
+                {/* Animated Typing Role */}
+                <div className="h-16 lg:h-12 flex items-center">
+                  <span className="font-mono text-sm lg:text-lg text-cyber-accent uppercase tracking-wider font-semibold">
+                    &gt; {currentRoleText}
+                    <span className="w-1.5 h-4 bg-cyber-accent ml-1 inline-block animate-pulse"></span>
+                  </span>
+                </div>
+
+                <p className="text-gray-400 max-w-xl text-sm lg:text-base leading-relaxed">
+                  Passionate engineering student focused on building bulletproof cryptosystems, post-quantum cryptographic lattices, smart AI integrations, and responsive full-stack software architectures.
+                </p>
+
+                {/* Call To Actions */}
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <button 
+                    onClick={handleDownloadResume}
+                    className="cyber-btn glass-panel border border-cyber-primary/40 px-6 py-3.5 rounded-lg text-cyber-primary font-orbitron text-xs tracking-widest uppercase font-bold hover:shadow-neon-cyan hover:border-cyber-primary transition-all duration-300 flex items-center gap-2"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    DOWNLOAD RESUME
+                  </button>
+
+                  <a 
+                    href="#projects"
+                    className="cyber-btn glass-panel border border-cyber-secondary/40 px-6 py-3.5 rounded-lg text-cyber-secondary font-orbitron text-xs tracking-widest uppercase font-bold hover:shadow-neon-purple hover:border-cyber-secondary transition-all duration-300 flex items-center gap-2"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    VIEW PROJECTS
+                  </a>
+
+                  <a 
+                    href="#contact"
+                    className="cyber-btn border border-white/10 bg-white/5 hover:bg-white/10 px-6 py-3.5 rounded-lg text-white font-orbitron text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center gap-2"
+                  >
+                    CONTACT ME
+                  </a>
+                </div>
+              </div>
+
+              {/* Futuristic SVG Avatar */}
+              <div className="lg:col-span-5 flex justify-center items-center relative">
+                <div 
+                  id="hero-graphic"
+                  ref={avatarRef}
+                  onMouseMove={handleAvatarMouseMove}
+                  onMouseLeave={handleAvatarMouseLeave}
+                  className="w-72 h-72 md:w-85 md:h-85 rounded-2xl glass-panel relative flex items-center justify-center p-4 border border-white/10 cursor-pointer overflow-hidden transition-all duration-300"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="cyber-grid absolute inset-0 opacity-40"></div>
+                  
+                  {/* Glowing core */}
+                  <div className="absolute w-40 h-40 bg-gradient-to-tr from-cyber-primary/20 to-cyber-secondary/20 rounded-full filter blur-xl animate-pulse"></div>
+
+                  {/* SVG Holographic Elements */}
+                  <svg className="w-4/5 h-4/5 text-cyber-primary drop-shadow-[0_0_15px_rgba(0,242,254,0.6)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Outer hexagon grid */}
+                    <polygon points="100,20 170,60 170,140 100,180 30,140 30,60" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5,5" className="animate-[spin_40s_linear_infinite]" style={{ transformOrigin: '100px 100px' }} />
+                    
+                    {/* Inner spinning orbits */}
+                    <circle cx="100" cy="100" r="60" stroke="#9b51e0" strokeWidth="1" strokeDasharray="20,10" className="animate-[spin_18s_linear_infinite]" style={{ transformOrigin: '100px 100px' }} />
+                    <circle cx="100" cy="100" r="45" stroke="currentColor" strokeWidth="1.5" className="animate-[pulse_3s_ease-in-out_infinite]" />
+                    <polygon points="100,45 147,73 147,127 100,155 53,127 53,73" stroke="currentColor" strokeWidth="1" className="animate-[spin_10s_linear_reverse_infinite]" style={{ transformOrigin: '100px 100px' }} />
+
+                    {/* Nodes and center matrix */}
+                    <circle cx="100" cy="100" r="10" fill="#9b51e0" className="animate-pulse" />
+                    <line x1="100" y1="20" x2="100" y2="45" stroke="currentColor" strokeWidth="1.5" />
+                    <line x1="100" y1="180" x2="100" y2="155" stroke="currentColor" strokeWidth="1.5" />
+                    <line x1="30" y1="60" x2="53" y2="73" stroke="currentColor" strokeWidth="1.5" />
+                    <line x1="170" y1="140" x2="147" y2="127" stroke="currentColor" strokeWidth="1.5" />
+                    <line x1="30" y1="140" x2="53" y2="127" stroke="currentColor" strokeWidth="1.5" />
+                    <line x1="170" y1="60" x2="147" y2="73" stroke="currentColor" strokeWidth="1.5" />
+                    
+                    {/* Core glowing nodes */}
+                    <circle cx="100" cy="45" r="3" fill="#00f2fe" />
+                    <circle cx="100" cy="155" r="3" fill="#00f2fe" />
+                    <circle cx="53" cy="73" r="3" fill="#9b51e0" />
+                    <circle cx="147" cy="127" r="3" fill="#9b51e0" />
+                    <circle cx="53" cy="127" r="3" fill="#00f2fe" />
+                    <circle cx="147" cy="73" r="3" fill="#9b51e0" />
+                  </svg>
+                  
+                  {/* Overlay text */}
+                  <span className="absolute bottom-4 font-mono text-[9px] text-gray-500 uppercase tracking-widest">
+                    SYSTEMS STATUS: NOMINAL
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* --- ABOUT & STATS SECTION --- */}
+          <section id="about" className="py-24 px-6 relative">
+            <div className="max-w-7xl mx-auto">
+              
+              {/* Header */}
+              <div className="flex flex-col mb-12 reveal-element">
+                <span className="font-orbitron text-cyber-primary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 01</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                  ABOUT &amp; STATS
+                </h2>
+                <div className="w-16 h-1 bg-cyber-primary mt-3"></div>
+              </div>
+
+              {/* Bio Card */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+                <div className="lg:col-span-8 glass-panel border border-white/5 p-8 rounded-2xl relative overflow-hidden reveal-element">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-cyber-primary/5 rounded-bl-full pointer-events-none"></div>
+                  
+                  <h3 className="text-xl font-orbitron font-semibold text-cyber-primary mb-4">
+                    BIOGRAPHY // LAKSHNA S
+                  </h3>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-4 text-sm lg:text-base">
+                    Currently pursuing a **B.E. in Electronics and Communication Engineering** at **Sri Eshwar College of Engineering**. As an aspiring engineer, I find my passion at the intersection of communication systems and cybersecurity. 
+                  </p>
+                  <p className="text-gray-300 leading-relaxed text-sm lg:text-base">
+                    My core area of research and exploration is **Post-Quantum Cryptography (PQC)**, specifically focus-testing NIST-selected algorithms like **ML-KEM** and **ML-DSA** in hybrid architectures. I thrive on solving complex problems, working in collaborative environments, and developing state-of-the-art tech.
+                  </p>
+                </div>
+
+                {/* Soft skills highlights inside glass cards */}
+                <div className="lg:col-span-4 grid grid-cols-2 gap-4 reveal-element">
+                  {[
+                    { title: "Teamwork", icon: "👥" },
+                    { title: "Critical Thinking", icon: "🧠" },
+                    { title: "Problem Solving", icon: "⚡" },
+                    { title: "Leadership", icon: "👑" },
+                  ].map((skill, idx) => (
+                    <div key={idx} className="glass-panel border border-white/5 p-4 rounded-xl flex flex-col items-center justify-center text-center hover:border-cyber-primary/30 transition-all duration-300 hover:scale-105">
+                      <span className="text-2xl mb-2">{skill.icon}</span>
+                      <span className="font-orbitron text-[10px] uppercase font-bold tracking-wider text-gray-300">{skill.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Stats Counters Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6 reveal-element">
+                {[
+                  { label: "CGPA", value: "8.08", decimal: true, desc: "University Score" },
+                  { label: "SkillRack Problems", value: "600", suffix: "+", desc: "Competitive Coding" },
+                  { label: "LeetCode Solved", value: "50", suffix: "+", desc: "Data Structures" },
+                  { label: "Engineering Projects", value: "2", suffix: "+", desc: "Active Builds" },
+                  { label: "Certifications", value: "6", suffix: "+", desc: "Industry Verified" },
+                ].map((stat, idx) => (
+                  <div key={idx} className="glass-panel border border-white/5 p-6 rounded-2xl relative flex flex-col items-center justify-center text-center overflow-hidden group hover:border-cyber-secondary/30 transition-all duration-300">
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyber-secondary/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <span className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-2">{stat.label}</span>
+                    <div className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white flex items-center justify-center gap-0.5">
+                      <span className="stat-counter text-glow-cyan" data-val={stat.value}>0</span>
+                      {stat.suffix && <span className="text-cyber-primary">{stat.suffix}</span>}
+                    </div>
+                    <span className="text-[10px] text-gray-400 mt-2 font-mono">{stat.desc}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- EDUCATION TIMELINE --- */}
+          <section id="education" className="py-24 px-6 relative bg-cyber-darkBlue/20 border-y border-white/5">
+            <div className="max-w-7xl mx-auto">
+              
+              {/* Header */}
+              <div className="flex flex-col mb-16 reveal-element">
+                <span className="font-orbitron text-cyber-secondary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 02</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                  EDUCATION HISTORY
+                </h2>
+                <div className="w-16 h-1 bg-cyber-secondary mt-3"></div>
+              </div>
+
+              {/* Timeline Container */}
+              <div id="education-timeline" className="relative max-w-3xl mx-auto pl-8 md:pl-0">
+                {/* Central progress line */}
+                <div className="absolute left-[8px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2 pointer-events-none">
+                  {/* Glowing progress beam controlled by GSAP scrolltrigger */}
+                  <div id="timeline-progress-line" className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-cyber-primary via-indigo-500 to-cyber-secondary origin-top transform scale-y-0 shadow-[0_0_10px_#00f2fe]"></div>
+                </div>
+
+                {/* Timeline Node 1 (B.E.) */}
+                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 reveal-element">
+                  <div className="md:text-right md:pr-12 flex flex-col justify-center">
+                    <span className="font-orbitron text-cyber-primary font-bold tracking-widest text-sm mb-1">2025 – 2029</span>
+                    <span className="text-xs text-gray-500 font-mono">DEGREE PROTOCOL // B.E. ECE</span>
+                  </div>
+                  
+                  {/* Circular indicator node */}
+                  <div className="absolute left-[-24px] md:left-1/2 w-4 h-4 rounded-full bg-cyber-bg border-2 border-cyber-primary -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 shadow-[0_0_8px_#00f2fe] pointer-events-none"></div>
+
+                  <div className="glass-panel p-6 rounded-2xl border border-cyber-primary/20 md:pl-8">
+                    <h4 className="font-orbitron font-extrabold text-white text-lg">B.E. Electronics &amp; Communication Engineering</h4>
+                    <p className="text-cyber-primary font-mono text-xs mt-1">Sri Eshwar College of Engineering</p>
+                    <p className="text-gray-400 text-xs mt-3 leading-relaxed">
+                      Deepening understanding in digital electronics, communication theories, networks, VLSI designs, and secure embedded firmware. Maintain academic performance at an **8.08 CGPA** average.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Timeline Node 2 (HSC) */}
+                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 reveal-element">
+                  {/* Mirror order on desktop */}
+                  <div className="md:order-2 md:pl-12 flex flex-col justify-center">
+                    <span className="font-orbitron text-cyber-secondary font-bold tracking-widest text-sm mb-1">2023 - 2025</span>
+                    <span className="text-xs text-gray-500 font-mono">ACADEMIC TIMELINE // HSC</span>
+                  </div>
+
+                  <div className="absolute left-[-24px] md:left-1/2 w-4 h-4 rounded-full bg-cyber-bg border-2 border-cyber-secondary -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 shadow-[0_0_8px_#9b51e0] pointer-events-none"></div>
+
+                  <div className="glass-panel p-6 rounded-2xl border border-cyber-secondary/20 md:order-1 md:text-right">
+                    <h4 className="font-orbitron font-extrabold text-white text-lg">Higher Secondary Certificate (HSC)</h4>
+                    <p className="text-cyber-secondary font-mono text-xs mt-1">Major: Physics, Chemistry, Mathematics, Computer Science</p>
+                    <div className="flex md:justify-end mt-3">
+                      <span className="bg-cyber-secondary/10 border border-cyber-secondary/20 px-3 py-1 rounded text-xs font-mono text-cyber-secondary">SCORE: 84.5%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Timeline Node 3 (SSLC) */}
+                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 reveal-element">
+                  <div className="md:text-right md:pr-12 flex flex-col justify-center">
+                    <span className="font-orbitron text-cyber-primary font-bold tracking-widest text-sm mb-1">2022 - 2023</span>
+                    <span className="text-xs text-gray-500 font-mono">ACADEMIC TIMELINE // SSLC</span>
+                  </div>
+
+                  <div className="absolute left-[-24px] md:left-1/2 w-4 h-4 rounded-full bg-cyber-bg border-2 border-cyber-primary -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 shadow-[0_0_8px_#00f2fe] pointer-events-none"></div>
+
+                  <div className="glass-panel p-6 rounded-2xl border border-cyber-primary/20 md:pl-8">
+                    <h4 className="font-orbitron font-extrabold text-white text-lg">Secondary School Leaving Certificate (SSLC)</h4>
+                    <p className="text-cyber-primary font-mono text-xs mt-1">General Board Academics</p>
+                    <div className="flex mt-3">
+                      <span className="bg-cyber-primary/10 border border-cyber-primary/20 px-3 py-1 rounded text-xs font-mono text-cyber-primary">SCORE: 92.4%</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- SKILLS SECTION WITH CIRCULAR PROGRESS BARS --- */}
+          <section id="skills" ref={skillsRef} className="py-24 px-6 relative">
+            <div className="max-w-7xl mx-auto">
+              
+              {/* Header */}
+              <div className="flex flex-col mb-16 reveal-element">
+                <span className="font-orbitron text-cyber-primary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 03</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                  SKILLS INVENTORY
+                </h2>
+                <div className="w-16 h-1 bg-cyber-primary mt-3"></div>
+              </div>
+
+              {/* Grid of Categories */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                {/* Category 1: Programming & Cybersecurity (With Circular Bars) */}
+                <div className="glass-panel p-8 rounded-2xl border border-white/5 flex flex-col justify-between reveal-element">
+                  <div>
+                    <div className="flex justify-between items-center mb-6">
+                      <h3 className="font-orbitron font-bold text-white text-sm uppercase tracking-wider">CYBERSECURITY &amp; LOGIC</h3>
+                      <span className="text-[10px] font-mono text-cyber-primary bg-cyber-primary/10 px-2 py-0.5 rounded border border-cyber-primary/20">CORE</span>
+                    </div>
+                    <p className="text-gray-400 text-xs mb-8">NIST-standard cryptography algorithms, logic execution, and object-oriented architectures.</p>
+                  </div>
+
+                  {/* Circular skills list */}
+                  <div className="grid grid-cols-2 gap-6 items-center">
+                    {[
+                      { name: "Post-Quantum Crypto", percentage: 85, color: "#00f2fe" },
+                      { name: "Python", percentage: 80, color: "#9b51e0" },
+                      { name: "Java", percentage: 70, color: "#00f2fe" },
+                      { name: "C Programming", percentage: 75, color: "#9b51e0" }
+                    ].map((s, idx) => {
+                      const radius = 35;
+                      const circumference = 2 * Math.PI * radius;
+                      const strokeDashoffset = skillsInView 
+                        ? circumference - (s.percentage / 100) * circumference 
+                        : circumference;
+
+                      return (
+                        <div key={idx} className="flex flex-col items-center space-y-3">
+                          <div className="relative w-20 h-20">
+                            {/* SVG Track Circle */}
+                            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 90 90">
+                              <circle cx="45" cy="45" r={radius} stroke="rgba(255,255,255,0.05)" strokeWidth="6" fill="transparent" />
+                              <circle 
+                                className="skill-circle"
+                                cx="45" 
+                                cy="45" 
+                                r={radius} 
+                                stroke={s.color} 
+                                strokeWidth="6" 
+                                fill="transparent"
+                                strokeDasharray={circumference}
+                                strokeDashoffset={strokeDashoffset}
+                                strokeLinecap="round"
+                              />
+                            </svg>
+                            <span className="absolute inset-0 flex items-center justify-center font-orbitron text-xs font-bold text-white">
+                              {s.percentage}%
+                            </span>
+                          </div>
+                          <span className="font-mono text-[10px] text-gray-400 text-center">{s.name}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Category 2: Web & Databases */}
+                <div className="glass-panel p-8 rounded-2xl border border-white/5 reveal-element">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-orbitron font-bold text-white text-sm uppercase tracking-wider">WEB &amp; DATABASES</h3>
+                    <span className="text-[10px] font-mono text-cyber-secondary bg-cyber-secondary/10 px-2 py-0.5 rounded border border-cyber-secondary/20">FULL STACK</span>
+                  </div>
+                  <p className="text-gray-400 text-xs mb-6">Structuring fast interfaces, modular styles, and optimizing persistent data lakes.</p>
+                  
+                  <div className="space-y-5">
+                    {[
+                      { name: "HTML5 / CSS3", pct: 90 },
+                      { name: "Bootstrap Framework", pct: 80 },
+                      { name: "MySQL", pct: 75 },
+                      { name: "MongoDB", pct: 70 },
+                    ].map((skill, idx) => (
+                      <div key={idx} className="space-y-2">
+                        <div className="flex justify-between text-xs font-mono">
+                          <span className="text-gray-300">{skill.name}</span>
+                          <span className="text-cyber-primary">{skill.pct}%</span>
+                        </div>
+                        {/* Custom animated progress line */}
+                        <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                          <div 
+                            className="bg-gradient-to-r from-cyber-primary to-indigo-500 h-full rounded-full transition-all duration-1000 ease-out"
+                            style={{ width: skillsInView ? `${skill.pct}%` : '0%' }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Category 3: Developer Tools & Workflows */}
+                <div className="glass-panel p-8 rounded-2xl border border-white/5 reveal-element">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-orbitron font-bold text-white text-sm uppercase tracking-wider">TOOLS &amp; WORKFLOWS</h3>
+                    <span className="text-[10px] font-mono text-cyber-accent bg-cyber-accent/10 px-2 py-0.5 rounded border border-cyber-accent/20">ENV</span>
+                  </div>
+                  <p className="text-gray-400 text-xs mb-6">Source control pipelines, visualization engines, and development editors.</p>
+                  
+                  <div className="space-y-4">
+                    {[
+                      { name: "Git / GitHub Version Control", desc: "Branching, PR logs, CI hooks" },
+                      { name: "VS Code Editor", desc: "Integrated development, settings config" },
+                      { name: "Power BI", desc: "Data insights, dashboards" },
+                      { name: "Excel & Canva", desc: "Report modeling and design graphics" },
+                    ].map((tool, idx) => (
+                      <div key={idx} className="flex items-start space-x-3 p-3 rounded-lg border border-white/5 bg-white/2 hover:border-cyber-primary/20 transition-all duration-300">
+                        <span className="text-cyber-primary text-xs font-mono">&gt;</span>
+                        <div>
+                          <h4 className="font-orbitron text-xs text-white uppercase tracking-wider">{tool.name}</h4>
+                          <p className="text-[10px] text-gray-400 mt-1 font-mono">{tool.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- PROJECTS SECTION --- */}
+          <section id="projects" className="py-24 px-6 relative bg-cyber-darkBlue/20 border-y border-white/5">
+            <div className="max-w-7xl mx-auto">
+              
+              {/* Header */}
+              <div className="flex flex-col mb-16 reveal-element">
+                <span className="font-orbitron text-cyber-secondary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 04</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                  FEATURED PROJECTS
+                </h2>
+                <div className="w-16 h-1 bg-cyber-secondary mt-3"></div>
+              </div>
+
+              {/* Projects Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                {/* Project 1: AstraQ */}
+                <div className="glass-panel border border-cyber-primary/20 p-8 rounded-3xl relative overflow-hidden group hover:border-cyber-primary transition-all duration-300 flex flex-col justify-between reveal-element hover:shadow-neon-cyan">
+                  <div className="cyber-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+                  
+                  <div>
+                    {/* Header tags */}
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-mono text-[9px] uppercase tracking-widest bg-cyber-primary/10 text-cyber-primary px-3 py-1 rounded-full border border-cyber-primary/30 font-bold">POST-QUANTUM CYBERSECURITY</span>
+                      <span className="text-gray-500 font-mono text-[10px]">01 //</span>
+                    </div>
+
+                    <h3 className="font-orbitron font-extrabold text-2xl text-white group-hover:text-cyber-primary transition-colors duration-300 mb-4">
+                      AstraQ – Adaptive Quantum Cybersecurity Framework
+                    </h3>
+
+                    <p className="text-gray-400 text-xs lg:text-sm leading-relaxed mb-6">
+                      A state-of-the-art post-quantum cybersecurity framework using NIST Round 3 PQC algorithms **ML-KEM (Kyber)** and **ML-DSA (Dilithium)**. Designed to simulate secure communication channels, map migration strategies, perform latency benchmarking, and detect cryptographic anomalies inside hybrid network stacks.
+                    </p>
+
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {["Python", "PQC Algorithms", "ML-KEM (Kyber)", "ML-DSA", "Socket.io", "Cryptography"].map((t, idx) => (
+                        <span key={idx} className="font-mono text-[9px] text-gray-300 bg-white/5 border border-white/10 px-2.5 py-1 rounded">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex items-center space-x-4 pt-4 border-t border-white/5">
+                    <a 
+                      href="https://github.com/lakshnas-ece/AstraQ" 
+                      target="_blank"
+                      className="cyber-btn glass-panel border border-white/10 px-4 py-2.5 rounded-lg font-orbitron text-[10px] tracking-widest font-bold text-white hover:border-cyber-primary transition-all flex items-center gap-2"
+                    >
+                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      GITHUB CODE
+                    </a>
+                    
+                    <a 
+                      href="#live-demo"
+                      onClick={(e) => { e.preventDefault(); alert("Live Demo pipeline offline. Simulating sandbox launch..."); }}
+                      className="cyber-btn border border-cyber-primary/30 px-4 py-2.5 rounded-lg font-orbitron text-[10px] tracking-widest font-bold text-cyber-primary hover:shadow-neon-cyan transition-all flex items-center gap-2"
+                    >
+                      LIVE RUN
+                    </a>
+                  </div>
+                </div>
+
+                {/* Project 2: SkillSwap Hub */}
+                <div className="glass-panel border border-cyber-secondary/20 p-8 rounded-3xl relative overflow-hidden group hover:border-cyber-secondary transition-all duration-300 flex flex-col justify-between reveal-element hover:shadow-neon-purple">
+                  <div className="cyber-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+
+                  <div>
+                    {/* Header tags */}
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-mono text-[9px] uppercase tracking-widest bg-cyber-secondary/10 text-cyber-secondary px-3 py-1 rounded-full border border-cyber-secondary/30 font-bold">COLLABORATION PORTAL</span>
+                      <span className="text-gray-500 font-mono text-[10px]">02 //</span>
+                    </div>
+
+                    <h3 className="font-orbitron font-extrabold text-2xl text-white group-hover:text-cyber-secondary transition-colors duration-300 mb-4">
+                      SkillSwap Hub – Peer-to-Peer Student Exchange
+                    </h3>
+
+                    <p className="text-gray-400 text-xs lg:text-sm leading-relaxed mb-6">
+                      A secure, containerized peer-to-peer web portal designed for student campus ecosystems to list, coordinate, and trade technical skills. Features include profile management nodes, real-time collaboration logs, secure session tokens, and skill search filters.
+                    </p>
+
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {["HTML", "CSS", "Bootstrap", "Javascript", "NodeJS", "MongoDB", "Auth Tokens"].map((t, idx) => (
+                        <span key={idx} className="font-mono text-[9px] text-gray-300 bg-white/5 border border-white/10 px-2.5 py-1 rounded">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex items-center space-x-4 pt-4 border-t border-white/5">
+                    <a 
+                      href="https://github.com/lakshnas-ece/SkillSwap-Hub" 
+                      target="_blank"
+                      className="cyber-btn glass-panel border border-white/10 px-4 py-2.5 rounded-lg font-orbitron text-[10px] tracking-widest font-bold text-white hover:border-cyber-secondary transition-all flex items-center gap-2"
+                    >
+                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      GITHUB CODE
+                    </a>
+                    
+                    <a 
+                      href="#live-demo"
+                      onClick={(e) => { e.preventDefault(); alert("Live Demo pipeline offline. Simulating sandbox launch..."); }}
+                      className="cyber-btn border border-cyber-secondary/30 px-4 py-2.5 rounded-lg font-orbitron text-[10px] tracking-widest font-bold text-cyber-secondary hover:shadow-neon-purple transition-all flex items-center gap-2"
+                    >
+                      LIVE RUN
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- CERTIFICATIONS & ACHIEVEMENTS --- */}
+          <section id="certifications" className="py-24 px-6 relative">
+            <div className="max-w-7xl mx-auto">
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                {/* Certifications panel */}
+                <div className="lg:col-span-7 flex flex-col justify-between">
+                  <div>
+                    {/* Header */}
+                    <div className="flex flex-col mb-12 reveal-element">
+                      <span className="font-orbitron text-cyber-primary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 05</span>
+                      <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                        CERTIFICATIONS
+                      </h2>
+                      <div className="w-16 h-1 bg-cyber-primary mt-3"></div>
+                    </div>
+
+                    {/* Certs Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-element">
+                      {[
+                        { title: "Joy of Computing using Python", issuer: "NPTEL (Elite + Silver)", desc: "Top percentage performance core logic certificate." },
+                        { title: "Introduction to C", issuer: "Infosys Springboard", desc: "Data processing, pointers, memory allocation." },
+                        { title: "Networking Basics", issuer: "Cisco Networking Academy", desc: "Subnetting, IP routing, switching models." },
+                        { title: "Python Programming", issuer: "SkillUp Certification", desc: "OOP, script algorithms, data parsers." },
+                        { title: "Data Structures & Algorithms", issuer: "Udemy Tutorial", desc: "Stacks, Queues, Binary Trees, sorting analysis." },
+                        { title: "Linux Fundamentals", issuer: "Red Hat Academy", desc: "Shell administration, directories, access permissions." },
+                      ].map((cert, idx) => (
+                        <div key={idx} className="glass-panel border border-white/5 p-5 rounded-2xl hover:border-cyber-primary/30 transition-all duration-300 flex flex-col justify-between group">
+                          <div>
+                            <div className="w-6 h-6 bg-cyber-primary/10 rounded flex items-center justify-center mb-3">
+                              <span className="text-[10px] text-cyber-primary">📜</span>
+                            </div>
+                            <h4 className="font-orbitron font-extrabold text-white text-xs uppercase tracking-wider group-hover:text-cyber-primary transition-colors">{cert.title}</h4>
+                            <p className="text-[10px] text-gray-500 font-mono mt-1">{cert.issuer}</p>
+                          </div>
+                          <p className="text-[10px] text-gray-400 mt-3 font-sans leading-relaxed">{cert.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Achievements panel */}
+                <div className="lg:col-span-5 flex flex-col justify-start">
+                  <div>
+                    {/* Header */}
+                    <div className="flex flex-col mb-12 reveal-element">
+                      <span className="font-orbitron text-cyber-secondary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 06</span>
+                      <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                        ACHIEVEMENTS
+                      </h2>
+                      <div className="w-16 h-1 bg-cyber-secondary mt-3"></div>
+                    </div>
+
+                    {/* Achievements List */}
+                    <div className="space-y-4 reveal-element">
+                      {[
+                        { title: "NPTEL Elite + Silver Certificate", details: "Awarded top bracket honors in the 'Joy of Computing using Python' course." },
+                        { title: "2nd Prize – Fresta Project Expo", details: "Recognized for prototyping an innovative software development solution." },
+                        { title: "600+ Problems on SkillRack", details: "Consistently solved complex algorithmic challenges and logical scripts." },
+                        { title: "50+ Solved on LeetCode", details: "Structured clean solutions in Python and Java focusing on trees, arrays and logic graphs." },
+                        { title: "Multiple Software Expos", details: "Presented and verified hybrid security network blueprints across local institutions." }
+                      ].map((ach, idx) => (
+                        <div key={idx} className="glass-panel border border-cyber-secondary/20 p-5 rounded-2xl relative overflow-hidden group hover:border-cyber-secondary transition-all duration-300">
+                          <div className="absolute top-0 right-0 w-[3px] h-full bg-cyber-secondary"></div>
+                          <h4 className="font-orbitron font-extrabold text-xs text-white uppercase tracking-wider flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-cyber-secondary rounded-full"></span>
+                            {ach.title}
+                          </h4>
+                          <p className="text-[10px] text-gray-400 mt-2 font-mono leading-relaxed">{ach.details}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- TECH STACK MARQUEE --- */}
+          <section className="py-16 border-y border-white/5 bg-[#030306]/40 overflow-hidden relative select-none">
+            <div className="marquee-inner">
+              {[
+                "PYTHON", "JAVA", "C PROGRAMMING", "HTML5", "CSS3", "BOOTSTRAP", 
+                "MONGODB", "MYSQL", "GIT", "GITHUB", "VS CODE", "POWER BI", "EXCEL", "CANVA",
+                // Repeat elements for infinite loop illusion
+                "PYTHON", "JAVA", "C PROGRAMMING", "HTML5", "CSS3", "BOOTSTRAP", 
+                "MONGODB", "MYSQL", "GIT", "GITHUB", "VS CODE", "POWER BI", "EXCEL", "CANVA"
+              ].map((tech, idx) => (
+                <div key={idx} className="flex items-center space-x-4 mx-8">
+                  <span className="text-3xl font-extrabold font-orbitron tracking-widest bg-gradient-to-r from-cyber-primary/45 to-cyber-secondary/45 bg-clip-text text-transparent hover:text-white transition-colors duration-300">{tech}</span>
+                  <span className="w-2.5 h-2.5 bg-cyber-accent/35 rounded-full"></span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* --- CONTACT SECTION --- */}
+          <section id="contact" className="py-24 px-6 relative">
+            <div className="max-w-7xl mx-auto">
+              
+              {/* Header */}
+              <div className="flex flex-col mb-16 reveal-element">
+                <span className="font-orbitron text-cyber-primary text-xs uppercase tracking-widest mb-2 font-bold">INFO FILE 07</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold font-orbitron text-white">
+                  ESTABLISH CORRESPONDENCE
+                </h2>
+                <div className="w-16 h-1 bg-cyber-primary mt-3"></div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                {/* Contact Coordinates Info */}
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-8 reveal-element">
+                  <div className="space-y-6">
+                    <h3 className="font-orbitron font-extrabold text-white text-lg">SECURE TERMINAL CHANNELS</h3>
+                    <p className="text-gray-400 text-xs leading-relaxed">Feel free to reach out for research collaborations, software development internship opportunities, hackathon partnerships, or technical placements.</p>
+                  </div>
+
+                  <div className="space-y-4">
+                    {[
+                      { icon: "📧", label: "EMAIL NODE", val: "lakshnas.ece@gmail.com", href: "mailto:lakshnas.ece@gmail.com" },
+                      { icon: "📞", label: "COMMS CALL", val: "+91 6379555239", href: "tel:+916379555239" },
+                      { icon: "💼", label: "LINKEDIN NET", val: "linkedin.com/in/lakshna-s-a037812bb", href: "https://www.linkedin.com/in/lakshna-s-a037812bb" },
+                      { icon: "💻", label: "GITHUB REPOS", val: "github.com/lakshnas-ece", href: "https://github.com/lakshnas-ece" },
+                      { icon: "⚡", label: "LEETCODE PROTOCOL", val: "leetcode.com/u/lakshna-s", href: "https://leetcode.com/u/lakshna-s" }
+                    ].map((channel, idx) => (
+                      <a 
+                        key={idx} 
+                        href={channel.href} 
+                        target="_blank"
+                        className="flex items-center space-x-4 p-4 rounded-xl border border-white/5 glass-panel hover:border-cyber-primary/30 transition-all duration-300 group"
+                      >
+                        <div className="w-10 h-10 bg-cyber-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <span className="text-lg">{channel.icon}</span>
+                        </div>
+                        <div>
+                          <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest block">{channel.label}</span>
+                          <span className="font-orbitron text-xs text-white group-hover:text-cyber-primary transition-colors">{channel.val}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+
+                  <span className="font-mono text-[9px] text-gray-600 uppercase tracking-widest hidden lg:block">SYSTEM SECURITY TOKEN: ML-KEM-AES-GCM-ACTIVE</span>
+                </div>
+
+                {/* Contact Form */}
+                <div className="lg:col-span-7 reveal-element">
+                  <div className="glass-panel border border-white/5 p-8 rounded-3xl relative">
+                    <div className="absolute top-0 right-12 w-20 h-[1px] bg-gradient-to-r from-transparent via-cyber-primary to-transparent"></div>
+
+                    {formStatus === 'success' ? (
+                      <div className="flex flex-col items-center justify-center py-12 text-center space-y-6">
+                        <div className="w-16 h-16 bg-green-500/10 border-2 border-green-500 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.3)] animate-[bounce_1s_ease_infinite]">
+                          <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-orbitron font-extrabold text-xl text-white">CORRESPONDENCE PACKET SENT</h3>
+                          <p className="text-gray-400 text-xs mt-2 font-mono">Quantum handshake verified. Message successfully queued in receiver buffer.</p>
+                        </div>
+                        <button 
+                          onClick={() => { setFormStatus('idle'); setFormState({ name: '', email: '', subject: '', message: '' }); }}
+                          className="cyber-btn glass-panel border border-white/10 px-6 py-2.5 rounded-lg font-orbitron text-[10px] tracking-widest text-white hover:border-cyber-primary transition-all font-bold uppercase"
+                        >
+                          TRANSMIT ANOTHER PACKET
+                        </button>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {/* Name */}
+                          <div className="space-y-2">
+                            <label className="font-orbitron text-[10px] tracking-widest text-gray-400 uppercase font-bold">NAME NODE</label>
+                            <input 
+                              type="text" 
+                              required
+                              className="w-full bg-white/3 border border-white/10 rounded-lg px-4 py-3.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-primary focus:shadow-[0_0_10px_rgba(0,242,254,0.15)] transition-all"
+                              placeholder="e.g. John Doe"
+                              value={formState.name}
+                              onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                            />
+                          </div>
+
+                          {/* Email */}
+                          <div className="space-y-2">
+                            <label className="font-orbitron text-[10px] tracking-widest text-gray-400 uppercase font-bold">EMAIL NODE</label>
+                            <input 
+                              type="email" 
+                              required
+                              className="w-full bg-white/3 border border-white/10 rounded-lg px-4 py-3.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-primary focus:shadow-[0_0_10px_rgba(0,242,254,0.15)] transition-all"
+                              placeholder="e.g. sender@domain.com"
+                              value={formState.email}
+                              onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Subject */}
+                        <div className="space-y-2">
+                          <label className="font-orbitron text-[10px] tracking-widest text-gray-400 uppercase font-bold">SUBJECT CHANNEL</label>
+                          <input 
+                            type="text" 
+                            required
+                            className="w-full bg-white/3 border border-white/10 rounded-lg px-4 py-3.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-primary focus:shadow-[0_0_10px_rgba(0,242,254,0.15)] transition-all"
+                            placeholder="e.g. Collaborative Research Opportunity"
+                            value={formState.subject}
+                            onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                          />
+                        </div>
+
+                        {/* Message */}
+                        <div className="space-y-2">
+                          <label className="font-orbitron text-[10px] tracking-widest text-gray-400 uppercase font-bold">MESSAGE PAYLOAD</label>
+                          <textarea 
+                            rows="5"
+                            required
+                            className="w-full bg-white/3 border border-white/10 rounded-lg px-4 py-3.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-primary focus:shadow-[0_0_10px_rgba(0,242,254,0.15)] transition-all resize-none"
+                            placeholder="Write message details..."
+                            value={formState.message}
+                            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                          ></textarea>
+                        </div>
+
+                        {/* Sending state Logs */}
+                        {formStatus === 'sending' && (
+                          <div className="bg-black/80 border border-cyber-primary/20 rounded p-4 text-[10px] text-green-400 font-mono space-y-1 select-none animate-pulse">
+                            {formLogs.map((log, i) => (
+                              <div key={i}>{log}</div>
+                            ))}
+                            <div className="w-1.5 h-3 bg-green-400 animate-ping inline-block"></div>
+                          </div>
+                        )}
+
+                        {/* Submit Button */}
+                        <button 
+                          type="submit" 
+                          disabled={formStatus === 'sending'}
+                          className="cyber-btn w-full bg-gradient-to-r from-cyber-primary to-cyber-secondary text-black font-orbitron font-extrabold text-xs tracking-widest py-4 rounded-lg hover:shadow-neon-cyan active:scale-98 transition-all disabled:opacity-50"
+                        >
+                          {formStatus === 'sending' ? 'TRANSMITTING PACKET...' : 'TRANSMIT ENCRYPTED MESSAGE'}
+                        </button>
+
+                      </form>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* --- FOOTER --- */}
+          <footer className="border-t border-white/5 py-12 px-6 bg-[#030305] text-center relative z-20">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+              
+              <span className="font-orbitron text-xs text-gray-500 uppercase tracking-widest">
+                DESIGNED &amp; DEVELOPED BY <span className="text-cyber-primary text-glow-cyan">LAKSHNA S</span>
+              </span>
+
+              <span className="font-mono text-[10px] text-gray-600">
+                &copy; {new Date().getFullYear()} // ALL SCHEMES SECURED.
+              </span>
+              
+              <a 
+                href="#home"
+                className="w-10 h-10 border border-white/10 bg-white/2 rounded-full flex items-center justify-center text-gray-400 hover:text-cyber-primary hover:border-cyber-primary transition-all duration-300 active:scale-90"
+              >
+                ▲
+              </a>
+            </div>
+          </footer>
+        </div>
+      );
+    }
+
+    // Mount to root
+    const rootEl = document.getElementById('root');
+    const root = ReactDOM.createRoot(rootEl);
+    root.render(<App />);
+  </script>
+
+</body>
+</html>
